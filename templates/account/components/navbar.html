@@ -1,0 +1,63 @@
+<!-- --------------NAVBAR--------------- -->
+<nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'blogApp:user_feed_list_view' %}"><strong>Mundana</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'blogApp:user_feed_list_view' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'blogApp:about_us_view' %}">About</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blogApp:blog_view' %}">My Blogs</a>
+                    </li>
+                    
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blogApp:blog_view' %}">Blogs</a>
+                    </li>
+                    
+                {% endif %}
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blogApp:write_view' %}">Write</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blogModeration:moderation_home_page_view' %}">Dashboard</a>
+                </li>
+                
+            </ul>
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav">
+                <!-- Avatar -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="rounded-circle" height="40" alt="Black and White Portrait of a Man" loading="lazy"/>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="{% url 'blogApp:profile_view' %}">Profile</a>
+                      <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                    </div>
+                  </li>
+              </ul>
+
+                
+            {% elif not user.is_authenticated%}                
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+                    <li class="nav-item highlight">
+                    <a class="nav-link" href="{% url 'account_login' %}">Get Started</a>
+                    </li>
+                </ul>
+            {% endif %}
+
+        </div>
+    </div>
+    </nav>
+    
+    <!-- End Navbar -->

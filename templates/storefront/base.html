@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block header %}{% include "./account/components/header.html" %}{% endblock header %}
+{% block navbar %}{% include "./account/components/navbar.html" %}{% endblock navbar %}
+<body>
+<style>
+    #preloader{
+        background:url({% static './img/demo/loader.gif' %}) no-repeat center center;
+        background-color:white;
+        height:100vh;
+        position:fixed;
+        width:100%;
+        z-index:100;
+        }
+    
+    .tooltip:hover{
+        
+    }
+</style>
+<div id="preloader"></div>
+
+{% block body %}
+
+
+
+{% endblock body %}
+
+{% block footer %}{% include "./account/components/footer.html" %}{% endblock footer %}
+</body>
+</html>
