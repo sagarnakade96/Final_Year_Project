@@ -23,5 +23,5 @@ urlpatterns = [
     path('user/', include('dj_rest_auth.urls')),
     path('',include('blogApp.urls')),
     path('dashboard/',include('blogModeration.urls')),  
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

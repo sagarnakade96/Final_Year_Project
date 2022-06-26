@@ -8,6 +8,8 @@ from blogApp.views import (
     ProfileView
 
 )
+from django.conf.urls.static import static
+from blogAdmin import settings
 
 from blogApp.views import (
     blog_home_page_view,
@@ -30,4 +32,4 @@ urlpatterns = [
     path(f"api/{API_VERSION}/add_category/",CategoryAPIView.as_view(), name="add_category"),
     path(f"api/{API_VERSION}/add_tag/",TagAPIView.as_view(), name="add_tag"),
     
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
